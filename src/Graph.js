@@ -7,12 +7,11 @@ import Irises from './Irises';
 
 
 
-const Graph = ({ width,height,margin }) => {
+const Graph = ({ width,height,margin,xAxisLabel,yAxisLabel }) => {
 
   const [data, setData] = useState(null);
   const url = "https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/iris.csv"
 
-  console.log(data)
   useEffect(() => {
     const row = d => {
       d.sepal_length = +d.sepal_length
@@ -25,12 +24,30 @@ const Graph = ({ width,height,margin }) => {
   
   }, [])
 
-  const xValue = d => d.sepal_length;
-  const xAxisLabel = 'Sepal Length';
+  let xValue;
+  if (xAxisLabel === "Sepal Length") {
+    xValue = d => d.sepal_length;
+  } else if (xAxisLabel === "Sepal Width") {
+    xValue = d => d.sepal_width;
+  } else if (xAxisLabel === "Petal Length") {
+    xValue = d => d.petal_length;
+  }else{
+    xValue = d => d.petal_width;
+  }
+
   const xAxisLabelOffset = 50;
 
-  const yValue = d => d.sepal_width;
-  const yAxisLabel = 'Sepal Width';
+  let yValue;
+  if (yAxisLabel === "Sepal Length") {
+    yValue = d => d.sepal_length;
+  } else if (yAxisLabel === "Sepal Width") {
+    yValue = d => d.sepal_width;
+  } else if (yAxisLabel === "Petal Length") {
+    yValue = d => d.petal_length;
+  }else{
+    yValue = d => d.petal_width;
+  }
+
   const yAxisLabelOffset = 50;
 
   const innerHeight = height - margin.top - margin.bottom;
@@ -58,7 +75,7 @@ const Graph = ({ width,height,margin }) => {
             yScale={yScale}
             xValue={xValue}
             yValue={yValue}
-            circleRadius = {6}
+            circleRadius = {9}
           />
           <AxisLabel
             x={innerWidth/2}
