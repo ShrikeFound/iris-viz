@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Graph from './Graph'
 
-function App() {
+const App = () => {
+  
+  const width = 960;
+  const height = 600;
+  const margin = { top: 20, right: 20, bottom: 100, left: 100 }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <h1>Comparing Iris Species</h1>
+      <Graph height={height} width={width} margin={margin}/>  
+    </>
+  )
 }
 
-export default App;
+export default App
