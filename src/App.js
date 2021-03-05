@@ -1,12 +1,20 @@
-import React, { useState} from 'react'
+import React, { useState,useEffect} from 'react'
 import Graph from './Graph'
-import AxisXDropdown from './AxisXDropdown';
-import AxisYDropdown from './AxisYDropdown';
-import { Container } from 'react-bootstrap'
+import AxisXDropdown from './AxisXDropdown'
+import AxisYDropdown from './AxisYDropdown'
+
 const App = () => {
   const [xLabel, setXLabel] = useState("Sepal Length");
   const [yLabel, setYLabel] = useState("Sepal Width");
-  console.log(xLabel)
+  const [bodyWidth, setBodyWidth] = useState(document.body.clientWidth)
+  const [bodyHeight, setBodyHeight] = useState(document.body.clientHeight)
+  
+
+
+  console.log(bodyHeight,bodyWidth)
+  
+  
+  
   const changeX = (e) => {
     setXLabel(e.target.value)
   }
@@ -14,6 +22,8 @@ const App = () => {
   const changeY = (e) => {
     setYLabel(e.target.value)
   }
+
+
 
   return (
     <>
@@ -29,9 +39,7 @@ const App = () => {
           <AxisYDropdown id="yLabel" onChange={changeY} />
         </div>
       </div>
-      <Container>
-        <Graph xAxisLabel={xLabel} yAxisLabel={yLabel} />
-      </Container>
+        <Graph xAxisLabel={xLabel} yAxisLabel={yLabel} bodyHeight={bodyHeight} bodyWidth = {bodyWidth} />
     </>
   )
 }

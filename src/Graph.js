@@ -7,12 +7,12 @@ import Irises from './Irises';
 import ColorLegend from "./ColorLegend"
 
 
-const Graph = ({ xAxisLabel,yAxisLabel }) => {
+const Graph = ({ xAxisLabel,yAxisLabel,bodyHeight,bodyWidth }) => {
 
   const [data, setData] = useState(null);
   const url = "https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/iris.csv"
-  const width = 1400;
-  const height = 800;
+  const height = bodyHeight*.8;
+  const width = bodyWidth*.8;
   const margin = { top: height/12, right: width/7, bottom: height/7.5, left: width/12.5 }
   useEffect(() => {
     const row = d => {
@@ -72,7 +72,7 @@ const Graph = ({ xAxisLabel,yAxisLabel }) => {
     )
   } else {
     return (
-      <svg className="graph" viewBox={`0 0 ${height} ${width}`}>
+      <svg className="graph" width = {width} height={height}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           
 
