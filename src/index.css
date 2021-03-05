@@ -13,7 +13,7 @@ code {
 }
 
 .axis-label {
-  fill: grey;
+  fill: rgba(0, 0, 0, 0.8);
 }
 h1 {
   text-align: center;
@@ -21,4 +21,27 @@ h1 {
 .graph {
   margin: 0 auto;
   display: block;
+  width: 100%;
 }
+select {
+  padding: 0.5rem 1rem;
+  border-color: grey;
+  font-size: 1.1em;
+  color: rgba(0, 0, 0, 0.8);
+}
+label {
+  font-size: 1.1em;
+  font-weight: semi-bold;
+  margin-left: 3rem;
+  margin-right: 0.7rem;
+}
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* #root {
+  border: 3px solid red;
+} */

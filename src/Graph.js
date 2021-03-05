@@ -2,16 +2,18 @@ import React,{useEffect,useState} from 'react'
 import { csv, scaleLinear, extent } from 'd3'
 import AxisX from './AxisX';
 import AxisY from './AxisY';
-import AxisLabel from './AxisXLabel';
+import AxisLabel from './AxisLabel';
 import Irises from './Irises';
+import ColorLegend from "./ColorLegend"
 
 
-
-const Graph = ({ width,height,margin,xAxisLabel,yAxisLabel }) => {
+const Graph = ({ xAxisLabel,yAxisLabel }) => {
 
   const [data, setData] = useState(null);
   const url = "https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/iris.csv"
-
+  const width = 1400;
+  const height = 800;
+  const margin = { top: height/12, right: width/7, bottom: height/7.5, left: width/12.5 }
   useEffect(() => {
     const row = d => {
       d.sepal_length = +d.sepal_length
@@ -23,6 +25,13 @@ const Graph = ({ width,height,margin,xAxisLabel,yAxisLabel }) => {
     csv(url, row).then(setData)
   
   }, [])
+
+  const colorMap = {
+    "setosa": "#A37FCF",
+    "virginica": "#442978",
+    "versicolor": "#56AFB5",
+  }
+
 
   let xValue;
   if (xAxisLabel === "Sepal Length") {
@@ -51,9 +60,11 @@ const Graph = ({ width,height,margin,xAxisLabel,yAxisLabel }) => {
   const yAxisLabelOffset = 50;
 
   const innerHeight = height - margin.top - margin.bottom;
-  const innerWidth = width - margin.left - margin.right
+  const innerWidth = width - margin.left - margin.right;
   const xScale = data ? scaleLinear().domain(extent(data, xValue)).range([0, innerWidth]).nice() : null
-  const yScale = data ? scaleLinear().domain(extent(data, yValue)).range([0, innerHeight]) : null
+  const yScale = data ? scaleLinear().domain(extent(data, yValue)).range([innerHeight, 0]) : null
+  
+
 
   if (!data) {
     return (
@@ -61,7 +72,7 @@ const Graph = ({ width,height,margin,xAxisLabel,yAxisLabel }) => {
     )
   } else {
     return (
-      <svg  className="graph" width={width} height={height}>
+      <svg className="graph" viewBox={`0 0 ${height} ${width}`}>
         <g transform={`translate(${margin.left},${margin.top})`}>
           
 
@@ -75,8 +86,17 @@ const Graph = ({ width,height,margin,xAxisLabel,yAxisLabel }) => {
             yScale={yScale}
             xValue={xValue}
             yValue={yValue}
-            circleRadius = {9}
+            circleRadius={6}
+            colorMap = {colorMap}
           />
+          <g transform={`translate(${innerWidth + 35},70)`}>
+            <AxisLabel
+              x={ 30 }
+              y={ -25 }
+            labelText= {"Color Legend"}
+          />
+            <ColorLegend colorMap={colorMap} />
+          </g>
           <AxisLabel
             x={innerWidth/2}
             y={innerHeight + xAxisLabelOffset}

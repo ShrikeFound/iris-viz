@@ -1,13 +1,11 @@
 import React, { useState} from 'react'
 import Graph from './Graph'
-import Dropdown from './Dropdown'
-
+import AxisXDropdown from './AxisXDropdown';
+import AxisYDropdown from './AxisYDropdown';
+import { Container } from 'react-bootstrap'
 const App = () => {
   const [xLabel, setXLabel] = useState("Sepal Length");
   const [yLabel, setYLabel] = useState("Sepal Width");
-  const width = 960;
-  const height = 600;
-  const margin = { top: 20, right: 20, bottom: 80, left: 80 }
   console.log(xLabel)
   const changeX = (e) => {
     setXLabel(e.target.value)
@@ -19,10 +17,21 @@ const App = () => {
 
   return (
     <>
-      <h1>Comparing Iris Species</h1>
-      <Dropdown id="xLabel" onChange={changeX}/>
-      <Dropdown id="yLabel" onChange={changeY}/>
-      <Graph height={height} width={width} margin={margin} xAxisLabel={xLabel} yAxisLabel={yLabel}/>  
+      <h1>Exploring the Iris Dataset</h1>
+      <div className="center-content">
+        <div className="center-content">
+          <label htmlFor="xLabel">X Axis Value</label>
+          <AxisXDropdown id="xLabel" onChange={changeX}/>
+        </div>
+        
+        <div className="center-content">
+          <label htmlFor="xLabel">Y Axis Value</label>
+          <AxisYDropdown id="yLabel" onChange={changeY} />
+        </div>
+      </div>
+      <Container>
+        <Graph xAxisLabel={xLabel} yAxisLabel={yLabel} />
+      </Container>
     </>
   )
 }
