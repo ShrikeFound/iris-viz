@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/iris-viz/static/css/main.1d7de696.chunk.css",
+    "main.js": "/iris-viz/static/js/main.2bc73ffe.chunk.js",
+    "main.js.map": "/iris-viz/static/js/main.2bc73ffe.chunk.js.map",
+    "runtime-main.js": "/iris-viz/static/js/runtime-main.a9193850.js",
+    "runtime-main.js.map": "/iris-viz/static/js/runtime-main.a9193850.js.map",
+    "static/js/2.aba173b0.chunk.js": "/iris-viz/static/js/2.aba173b0.chunk.js",
+    "static/js/2.aba173b0.chunk.js.map": "/iris-viz/static/js/2.aba173b0.chunk.js.map",
+    "index.html": "/iris-viz/index.html",
+    "static/css/main.1d7de696.chunk.css.map": "/iris-viz/static/css/main.1d7de696.chunk.css.map",
+    "static/js/2.aba173b0.chunk.js.LICENSE.txt": "/iris-viz/static/js/2.aba173b0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a9193850.js",
+    "static/js/2.aba173b0.chunk.js",
+    "static/css/main.1d7de696.chunk.css",
+    "static/js/main.2bc73ffe.chunk.js"
+  ]
+}
