@@ -72,7 +72,7 @@ const Graph = ({ xAxisLabel,yAxisLabel,bodyHeight,bodyWidth }) => {
     )
   } else {
     return (
-      <svg className="graph" width = {width} height={height}>
+      <svg className="graph" viewBox={`0 0 ${width} ${height}`} >
         <g transform={`translate(${margin.left},${margin.top})`}>
           
 
